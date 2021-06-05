@@ -17,7 +17,9 @@ Description : Shareable configs are designed to work with the extends feature of
    https://www.npmjs.com/package/requests
 
 
-
+### To parse form data
+  npm i body-parser <br/>
+  https://www.npmjs.com/package/body-parser
 
 
 
