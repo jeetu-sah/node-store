@@ -11,6 +11,11 @@ Description : Shareable configs are designed to work with the extends feature of
 ###  Database Connectivity
   npm i mongoose <br/>
   https://mongoosejs.com/
+  
+### Manage request and parameter from url 
+    npm i request
+   const request = require('request');
+   https://www.npmjs.com/package/requests
 
 
 
