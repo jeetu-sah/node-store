@@ -13,8 +13,7 @@ Description : Shareable configs are designed to work with the extends feature of
   https://mongoosejs.com/
   
 ### Manage request and parameter from url 
-    npm i request
-   const request = require('request');
+  npm i request <br/>
    https://www.npmjs.com/package/requests
 
 
