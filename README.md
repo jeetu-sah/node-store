@@ -21,9 +21,9 @@ Description : Shareable configs are designed to work with the extends feature of
   npm i body-parser <br/>
   https://www.npmjs.com/package/body-parser
   
- ### To save encrypted password
-  npm i --save bcrypt
-  https://www.loginradius.com/blog/async/hashing-user-passwords-using-bcryptjs/
+ ### To save encrypted password <br/>
+  npm i --save bcrypt  <br/>
+  https://www.loginradius.com/blog/async/hashing-user-passwords-using-bcryptjs/ <br/>
 
 
 
