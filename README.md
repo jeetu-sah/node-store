@@ -20,6 +20,10 @@ Description : Shareable configs are designed to work with the extends feature of
 ### To parse form data
   npm i body-parser <br/>
   https://www.npmjs.com/package/body-parser
+  
+ ### To save encrypted password
+  npm i --save bcrypt
+  https://www.loginradius.com/blog/async/hashing-user-passwords-using-bcryptjs/
 
 
 
