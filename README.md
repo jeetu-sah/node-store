@@ -24,6 +24,10 @@ Description : Shareable configs are designed to work with the extends feature of
  ### To save encrypted password <br/>
   npm i --save bcrypt  <br/>
   https://www.loginradius.com/blog/async/hashing-user-passwords-using-bcryptjs/ <br/>
-
+  
+  
+  ### For form validation package <br/>
+  npm i @hapi/joi   <br/>
+  https://www.npmjs.com/package/@hapi/joi
 
 
