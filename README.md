@@ -29,5 +29,7 @@ Description : Shareable configs are designed to work with the extends feature of
   ### For form validation package <br/>
   npm i @hapi/joi   <br/>
   https://www.npmjs.com/package/@hapi/joi
+  
+  ##### uses Url: https://joi.dev/api/?v=17.4.0
 
 
