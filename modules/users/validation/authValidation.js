@@ -1,25 +1,23 @@
 const Joi = require('@hapi/joi');
 
-const registerValidationSchema = Joi.object({
-    //name validation
+const authValidation = Joi.object({
     first_name:Joi.string()
             .min(3)
             .max(20)
             .required(),
-    //email validation
     email: Joi.string()
         .trim()
         .lowercase()
         .min(3)
         .max(128)
         .required(),
-    //password validation
     password: Joi.string()
-                    .required()
-    //.pattern(new RegExp()),
-   // repeat_password: Joi.ref('password'),
+                .required(),
+
+    mobile:Joi.string(),
+
+    last_name:Joi.string()
 })
 
 
-
-module.exports = { registerValidationSchema };
+module.exports = { authValidation };
