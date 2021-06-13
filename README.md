@@ -35,5 +35,10 @@ Description : Shareable configs are designed to work with the extends feature of
    ### For Login authentication passport <br/>
    npm install passport  <br/>
    http://www.passportjs.org/  <br/>
+   
+   
+### For store session into database  <br/>
+   npm i connect-mongo <br/>
+   https://www.npmjs.com/package/connect-mongo  <br/>
 
 
