@@ -1,5 +1,4 @@
 const joiFormatter = (error) =>{
-    
     const validationErrorObj = {}; 
     const details = error.details;
    
