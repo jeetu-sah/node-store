@@ -3,23 +3,26 @@ const bodyParser = require("body-parser");
 const path = require('path');
 const ejs = require('ejs');
 const request = require('request');
+const mongoose = require('mongoose');
+const passport = require('passport');
+require('./helper/authStrategies/localStrategies');
 const app = express();
+const authMiddleware = require('./app/middleware/authMiddleware');
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
-
 //database connection
 require('./database/db_config.js');
+const mongoDbConnection = require('./database/db_config');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const { Mongoose } = require('mongoose');
 
 
-//inlcude route file
-const authRoutes = require('./routes/authRoutes');
-
-app.use('/',authRoutes);
 
 //include model files
-//const User = require('./models/Users');
+const User = require('./modules/users/models/Users');
 
 //Css and JS file configure 
 const staticPath = path.join(__dirname , 'public');
@@ -30,10 +33,30 @@ app.use(express.static(staticPath));
 
 
 //const dataBasePath = path.join(__dirname , 'database');
-
 app.set('view engine','ejs');
-app.get('/' , function(req , res){
-    res.render('index')
+//setup session
+//app.set('trust proxy', 1) 
+app.use(session({
+  secret: '93d6232e078ed9ed0a2004f4e64b36d77e55d188',
+  resave: false,
+  saveUninitialized: true,
+  //cookie: { secure: false },
+  cookie: { maxAge: 60 * 60 * 1000 },
+  store: MongoStore.create({ mongoUrl: 'mongodb://localhost/node_practice' })
+}))
+//passport initialize
+app.use(passport.initialize());
+app.use(passport.session());
+
+//inlcude route file
+const authRoutes = require('./routes/authRoutes');
+app.use('/',authRoutes);
+
+app.get('/', authMiddleware, function(req , res){
+  console.log('User:',req.user);
+  req.session.view = (req.session.view || 0) + 1;
+  console.log('view',req.session.view);
+  return res.render('index')
 });
 // app.get('/register' , function(req , res){
 //     res.render('register',{message:null})

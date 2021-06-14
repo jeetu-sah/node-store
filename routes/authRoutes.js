@@ -5,11 +5,15 @@ const Joi = require('@hapi/joi');
 const { addUser } = require('../modules/users/service/userServices');
 const {joiFormatter , mongooseValidationFormator} = require('../helper/validationFormatter');
 const { authValidation }=  require('../modules/users/validation/authValidation');
+const passport = require('passport');
+const authMiddleware = require('../app/middleware/authMiddleware');
+const guestMiddleware = require('../app/middleware/guestMiddleeare');
+
 
 
 /**Login Request**/
-router.get('/login',(req , res)=>{
-    res.render('login',{
+router.get('/login',guestMiddleware,(req , res)=>{
+    return res.render('login',{
                             status:200,
                             error:{},
                             formData:req.body
@@ -18,15 +22,12 @@ router.get('/login',(req , res)=>{
 
 /**
  * 
+ * 
  * Login Post Request**/
-router.post('/login',(req , res)=>{
-    //return res.send(req.body);
-    res.render('login',{
-                            status:200,
-                            error:{},
-                            msg:"Login Successfully",
-                            formData:req.body
-                        })
+router.post('/login',
+    passport.authenticate('local', { failureRedirect: '/login',}),
+    (req , res) =>  {
+        return res.redirect('/');
 });
 
 
