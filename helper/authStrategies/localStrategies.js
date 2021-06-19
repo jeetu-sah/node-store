@@ -10,11 +10,12 @@ passport.use(new LocalStrategy({
         try{
             const user = await User.findOne({ email} , (err, user)=>{
                 if (err) { return done(err); }
-                if (!user) { return done(null, false); }
+                if (!user) { return done(null, false ,{msg:"User not found."}); }
                 // if the user is properly authenticated
                  return done(null, user);
             });
         }   catch (e){
+            console.log("Err:",e);
             return done(e);
         } 
   }

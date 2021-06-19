@@ -1,4 +1,5 @@
 const express = require('express');
+var logger = require('morgan')
 const bodyParser = require("body-parser");
 const path = require('path');
 const ejs = require('ejs');
@@ -47,16 +48,39 @@ app.use(session({
 //passport initialize
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(logger('dev'))
+//initialize local variable
+//flash message initialize
+app.locals.errors = {};
+app.locals.validationError = {  status:null,
+                                errors:{},
+                                formData:{}
+                              }
+
+app.use( (req , res , next) =>{
+  app.locals.sessionMessage = req.session.flashData;
+  app.locals.validationError = req.session.validationError;
+ 
+
+  delete req.session.flashData;
+  next()
+})
+
+
 
 //inlcude route file
 const authRoutes = require('./routes/authRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 app.use('/',authRoutes);
+app.use('/',adminRoutes);
+
+
 
 app.get('/', authMiddleware, function(req , res){
-  console.log('User:',req.user);
-  req.session.view = (req.session.view || 0) + 1;
-  console.log('view',req.session.view);
-  return res.render('index')
+  //console.log('User:',req.user);
+  //req.session.view = (req.session.view || 0) + 1;
+  //console.log('view',req.session.view);
+  return res.redirect('/admin/dashboard')
 });
 // app.get('/register' , function(req , res){
 //     res.render('register',{message:null})
@@ -82,7 +106,9 @@ app.get('/', authMiddleware, function(req , res){
 //     //res.send(user);
 // });
 
-
+app.use(function (req, res, next) {
+  res.status(404).render('404');
+})
 
 app.listen(8000 ,    ()=>{
     console.log("Service working")
