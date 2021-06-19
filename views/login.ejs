@@ -6,61 +6,53 @@
 <body>
     <div class="container mt-80">
         <div class="card bg-light">
-            <article class="card-body mx-auto" style="max-width: 400px;">
-                <h4 class="card-title mt-3 text-center">Login with your registered mail.</h4>
-                <div class="divider-text">
-                    <span class="bg-light"></span>
-                </div>
-                <% if (status==300) { %>
+            <div class="card-body mx-auto" style="max-width: 400px;">
+                <h4 class="card-title mt-3 text-center" style="margin-bottom: 55px;">Login with your registered mail.</h4>
+              
+                <% if (validationError.status) { %>
                     <div role="alert">
-                        <p class="alert alert-danger">
-                            Please all required fields.
-                        </p>
-                    </div>
-                    <% } %>
-                <% if (status==200) { %>
-                    <div role="alert">
-                        <p class="alert alert-success">
-                           Login Successfully
+                        <p class="alert alert-<%= validationError.status == 200 ? 'success' : 'danger' %>">
+                            <%= validationError.message %>
                         </p>
                     </div>
                 <% } %>
-                        <form method="POST" action="/login">
-                            <div class="form-group input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-envelope"></i>
-                                    </span>
-                                </div>
-                                <input name="email" 
-                                    id="email"
-                                    class="form-control <%= typeof error.email !='undefined' ? 'is-invalid' : '' %>"
-                                    placeholder="Email address" 
-                                    type="email" 
-                                    value="<%= formData.email %>" />
-                            </div>
-                            <div class="form-group input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-lock"></i>
-                                    </span>
-                                </div>
-                                <input name="password" 
-                                    id="password"
-                                    class="form-control <%= typeof error.password !='undefined' ? 'is-invalid' : '' %>"
-                                    placeholder="Create password" 
-                                    type="text" />
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" 
-                                    class="btn btn-primary btn-block"> Login</button>
-                            </div>
-                            <p class="text-center">
-                                <a href="/register">
-                                    Do not have an account? Register here
-                                </a>
-                            </p>
-                        </form>
+                
+                <form method="POST" action="/login">
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                        </div>
+                        <input name="email" 
+                            id="email"
+                            class="form-control <%= typeof validationError.errors.email !='undefined' ? 'is-invalid' : '' %>"
+                            placeholder="Email address" 
+                            type="email" 
+                            value="<%= validationError.formData.email %>" />
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-lock"></i>
+                            </span>
+                        </div>
+                        <input name="password" 
+                            id="password"
+                            class="form-control <%= typeof validationError.errors.password !='undefined' ? 'is-invalid' : '' %>"
+                            placeholder="Create password" 
+                            type="text" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" 
+                            class="btn btn-primary btn-block"> Login</button>
+                    </div>
+                    <p class="text-center">
+                        <a href="/register">
+                            Do not have an account? Register here
+                        </a>
+                    </p>
+                </form>
             </article>
         </div>
     </div>

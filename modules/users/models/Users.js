@@ -17,7 +17,8 @@ const userSchema = mongoose.Schema({
     email:{
         type:String,
         required:[true , 'Last Name is required'],
-        maxlenght:[150 , 'Last name must be greater than from 15 character.']
+        maxlenght:[150 , 'Last name must be greater than from 15 character.'],
+        unique: true
     },
     email:{
         type:String,
@@ -30,5 +31,8 @@ const userSchema = mongoose.Schema({
 { timestamps: true }
 );
 
+
 const User = mongoose.model('users',userSchema);
 module.exports = User;
+
+
