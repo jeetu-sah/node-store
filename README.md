@@ -41,4 +41,6 @@ Description : Shareable configs are designed to work with the extends feature of
    npm i connect-mongo <br/>
    https://www.npmjs.com/package/connect-mongo  <br/>
 
-
+### For display flash messages <br/>
+npm uninstall express-flash <br/>
+  
