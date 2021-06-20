@@ -44,3 +44,7 @@ Description : Shareable configs are designed to work with the extends feature of
 ### For display flash messages <br/>
 npm uninstall express-flash <br/>
   
+  
+### For .env file package <br />
+npm i dotenv   <br />  
+https://www.npmjs.com/package/dotenv
