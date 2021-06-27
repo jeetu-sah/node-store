@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Admin | Note Store</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/adminWeb/plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/adminWeb/dist/css/adminlte.min.css" rel="stylesheet" type="text/css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"><!-- jQuery -->
+    <script src="/adminWeb/plugins/jquery/jquery.min.js"></script>
+    <script src="/adminWeb/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/adminWeb/dist/js/adminlte.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <%- include('../../master/admin/head_nav') %>
+    <%- include('../../master/admin/side-bar')%>
+    
+<%# Start: load admin body   %>
+    <%- content %>
+
+<%# End: load admin body %>
+<!-- Main Footer -->
+<footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+        Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+    <%- extend('../../master/admin/layout') %>
+ 
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" id="pageBody">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Starter Page</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- /.col-md-6 -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="m-0">Category List</h5>
+                            </div>
+                            <div class="card-body">
+                                    <form>
+                                            <div class="form-group">
+                                                <label for="disabledTextInput">Name</label>
+                                                <input 
+                                                    type="text" 
+                                                    id="name" 
+                                                    v-model="name"
+                                                    class="form-control"
+                                                    placeholder="Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Description</label>
+                                                <textarea 
+                                                    id="description"
+                                                    v-model="description"
+                                                    name="description" 
+                                                    class="form-control"
+                                                    cols="10" 
+                                                    placeholder="Description"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Seo Content</label>
+                                                <textarea 
+                                                    id="seo_content"
+                                                    v-model="seo_content"
+                                                    name="seo_content" 
+                                                    class="form-control"
+                                                    cols="10" 
+                                                    placeholder="Seo Content"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Priroty</label>
+                                                <input 
+                                                    type="number" 
+                                                    v-model="priority"
+                                                    id="priority" 
+                                                    class="form-control" 
+                                                    placeholder="Priority" />
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.content -->
+    </div>
+    <script src="/customAssets/js/category.js"></script>
+

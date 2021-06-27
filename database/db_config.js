@@ -1,5 +1,6 @@
+const config = require('../config/config');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/node_practice', {useNewUrlParser: true, 
+mongoose.connect(config.mongoUrl, {useNewUrlParser: true, 
                                                 useUnifiedTopology: true
                                             });
 

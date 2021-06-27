@@ -1,4 +1,3 @@
-'use strict';
 const express = require('express');
 const app = express();
 const router = express.Router();
@@ -10,21 +9,13 @@ const { loginValidation }  =require('../modules/users/validation/loginValidation
 const passport = require('passport');
 const authMiddleware = require('../app/middleware/authMiddleware');
 const guestMiddleware = require('../app/middleware/guestMiddleeare');
-const flashMessageMiddleware = require('../app/middleware/flashMessageMiddleware');
 const bcrypt = require("bcrypt");
 
-//define local variales
-// app.locals.error = {};
-// app.locals.formData = {};
+
+
 
 /**Login Request**/
 router.get('/login',guestMiddleware,(req , res)=>{
-    req.session.validationError = {
-                                    message:null,
-                                    status:null,
-                                    errors:{},
-                                    formData:req.body
-                                }
     return res.render('login')
 });
 
@@ -101,12 +92,6 @@ router.post('/login', guestMiddleware ,(req , res , next)=>{
  * define route view file routes
  * **/
 router.get('/register' ,guestMiddleware ,(req , res) => {
-    //return validation
-    req.session.validationError = {
-                                    status:null,
-                                    errors:{},
-                                    formData:{}
-                                }
     res.render('register');
 });
 
@@ -125,8 +110,6 @@ router.post('/register',guestMiddleware, async (req , res)=>{
                                     }
             return res.redirect('register');
         }
-        
-        
         req.session.validationError  = {
                                             message:"Registration Successfully.",
                                             status:200,

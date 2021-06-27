@@ -15,13 +15,11 @@ const ADMIN_BASE_URL = '/admin';
 
 /**Login Request**/
 router.get(`${ADMIN_BASE_URL}/dashboard`,authMiddleware,(req , res)=>{
-    req.session.validationError = {
-                                    message:null,
-                                    status:null,
-                                    errors:{},
-                                    formData:req.body
-                                }
     return res.render('admin/index')
+});
+
+router.get(`${ADMIN_BASE_URL}/categories`,authMiddleware,(req , res)=>{
+    return res.render('admin/category/list')
 });
 
 
