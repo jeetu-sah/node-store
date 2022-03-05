@@ -18,9 +18,21 @@ router.get(`${ADMIN_BASE_URL}/dashboard`,authMiddleware,(req , res)=>{
     return res.render('admin/index')
 });
 
+
+
 router.get(`${ADMIN_BASE_URL}/categories`,authMiddleware,(req , res)=>{
     return res.render('admin/category/list')
 });
+
+router.get('/admin/categories/list',authMiddleware,(req , res)=>{
+   return res.render('admin/category/category-list')
+});
+
+router.get('/admin/product/add',authMiddleware,(req , res)=>{
+   return res.render('admin/product/add')
+});
+
+
 
 
 

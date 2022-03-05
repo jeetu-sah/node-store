@@ -7,7 +7,6 @@ const flashMessageMiddleware = (req , res , next) => {
         }
         //req.session.validationError = null;
     }
-
     next()
 }
 module.exports = flashMessageMiddleware;
