@@ -25,7 +25,9 @@ router.get('/login',guestMiddleware,(req , res)=>{
  * Login Post Request**/
 router.post('/login', guestMiddleware ,(req , res , next)=>{
     passport.authenticate('local', (err , user , info)=>{
-        const loginValidationResult = loginValidation.validate(req.body ,{ abortEarly :false});
+        
+        const loginValidationResult = loginValidation.validate(req.body ,{ abortEarly :false});    
+        
         if(loginValidationResult.error){
             //return validation
             req.session.validationError = {
@@ -131,7 +133,6 @@ router.post('/register',guestMiddleware, async (req , res)=>{
     }
   
 });
-
 
 router.get('/logout',authMiddleware , (req , res)=>{
     req.logOut();

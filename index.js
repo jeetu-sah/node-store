@@ -8,6 +8,8 @@ const ejs = require('ejs');
 const request = require('request');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const Vue = require('vue');
+const axios = require('axios');
 require('./helper/authStrategies/localStrategies');
 const app = express();
 const authMiddleware = require('./app/middleware/authMiddleware');
@@ -26,9 +28,6 @@ const MongoStore = require('connect-mongo');
 
 const { Mongoose } = require('mongoose');
 app.engine('ejs', require('express-ejs-extend')); // add this line
-
-
-
 
 //include model files
 const User = require('./modules/users/models/Users');
@@ -90,45 +89,25 @@ app.use( (req , res , next) =>{
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const siteRoutes = require('./routes/siteRoutes');
+//api routes start
+const categoryApiRoutes = require('./routes/api/categoryRoute');
+const productApiRoutes = require('./routes/api/productRoute');
 app.use('/',authRoutes);
 app.use('/',adminRoutes);
 app.use('/',siteRoutes);
+app.use('/api/v1/category',categoryApiRoutes);
+app.use('/api/v1/product/',productApiRoutes);
 
 
 
 app.get('/', function(req , res){
-  //req.session.view = (req.session.view || 0) + 1;
-  //console.log('view',req.session.view);
   return res.render('front/index')
 });
-// app.get('/register' , function(req , res){
-//     res.render('register',{message:null})
-// });
-
-// app.post('/register' , async function(req , res){
-//     //res.send('register form submit');
-//     const user = new User(req.body);
-//     // generate salt to hash password
-//     const salt = await bcrypt.genSalt(10);
-//     // now we set user password to hashed password
-//     user.password = await bcrypt.hash(user.password, salt);
-//     await user.save().then( 
-//         () =>{
-//             res.render('register', {message:"Registration Successfully."})
-//         }
-//     ).catch( 
-//         (error) =>{
-//             res.send(error);
-//         }
-//     );
-//     // req.flash('success', 'Thanks for the message! I‘ll be in touch :)');
-//     //res.send(user);
-// });
 
 app.use(function (req, res, next) {
   res.status(404).render('404');
 })
 
-app.listen(config.port ,    ()=>{
-    console.log(`Server running on port ${config.port}`);
+app.listen(config.port , ()=>{
+  console.log(`Server running on port ${config.port}`);
 });

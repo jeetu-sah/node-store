@@ -1,0 +1,164 @@
+<%- extend('../../master/admin/layout') %>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" id="pageBody">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Category List</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- /.col-md-6 -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="m-0 float-left">Add New Category</h5>
+                                <a href="#"
+                                    class="btn btn-primary float-right">Category List</a>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" v-on:submit.prevent="submitAddProducts" id="productSaveForm">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="disabledTextInput">Select Parent Category</label>
+                                                <select name="parent_category" id="parent_category"
+                                                    class="form-control">
+                                                    <option value="null">--Select--Parent--Category</option>
+                                                
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="disabledTextInput">Name</label>
+                                                <input type="text" id="name" name="name"
+                                                    class="form-control" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-10">
+                                        <div class="col-sm-12">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="show-property">
+
+                                                <label class="form-check-label" for="exampleCheck1">Is feature is
+                                                    available?</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-10" id="property-div">
+                                        <div class="row mb-10">
+                                            <div class="col-sm-12">
+                                                <button type="button" name="add-property" id="add-property"
+                                                    class="btn btn-success">Add New Property</button>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-10">
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <label for="disabledTextInput">Property Name</label>
+                                                    <input type="text" id="name" name="name"
+                                                        class="form-control" placeholder="Name" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label for="disabledTextInput">Property type</label>
+                                                    <select type="text" name="property_type" class="form-control">
+                                                    
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <label for="disabledTextInput">Is required</label>
+                                                    <input style="margin-top: 40px;" type="checkbox"
+                                                        class="form-check-input" id="exampleCheck1">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <button type="button" style="margin-top: 30px;"
+                                                        class="btn btn-danger remove-property">Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Description</label>
+                                                <textarea id="description"
+                                                    name="description" class="form-control" cols="10" rows="5"
+                                                    placeholder="Description"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Seo Content</label>
+                                                <textarea id="seo_content"
+                                                    name="seo_description" class="form-control" cols="20" rows="5"
+                                                    placeholder="Seo Content"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Priroty</label>
+                                                <input type="number" id="priority"
+                                                    name="priority" class="form-control" placeholder="Priority" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <button type="submit" name="add-products" class="btn btn-success">Submit</button>
+                                            <button type="button" 
+                                                class="btn btn-primary">Test </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var productApp  =  new Vue({
+                    el:"#pageBody",
+                    data:{
+                       
+                    },
+                    methods:{
+                        submitAddProducts:function(){
+                            const formData = new FormData(document.getElementById("productSaveForm"));
+                              axios.post('/api/v1/product/add-product', {
+                                headers: {
+                                    'Content-type': 'application/x-www-form-urlencoded',
+                                }
+                              , formData, 
+                            }).then((res) => {
+                                console.log(res)
+                            })
+                        }
+                    }
+            });
+    </script>>

@@ -7,34 +7,52 @@
     <title>Admin | Note Store</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="/adminWeb/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
     <!-- Theme style -->
     <link rel="stylesheet" href="/adminWeb/dist/css/adminlte.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/custom.css" rel="stylesheet" type="text/css">
+
+
     <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"><!-- jQuery -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <script src="/adminWeb/plugins/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="/adminWeb/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/adminWeb/dist/js/adminlte.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+    
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
+    
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
-    <%- include('../../master/admin/head_nav') %>
-    <%- include('../../master/admin/side-bar')%>
-    
-<%# Start: load admin body   %>
-    <%- content %>
+    <div id="contentBody">
+        <div class="wrapper">
+            <%- include('../../master/admin/head_nav') %>
+            <%- include('../../master/admin/side-bar')%>
+            
+        <%# Start: load admin body   %>
+            <%- content %>
 
-<%# End: load admin body %>
-<!-- Main Footer -->
-<footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-        Anything you want
+        <%# End: load admin body %>
+        
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="float-right d-none d-sm-inline">
+                Anything you want
+            </div>
+            <!-- Default to the left -->
+            <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            reserved.
+        </footer>
+        </div>
     </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-</footer>
-</div>
 </body>
 </html>
